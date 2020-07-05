@@ -1,0 +1,55 @@
+<TextInput>:
+    halign: 'center'
+    multiline: False
+    write_tab: False
+    font_size: self.height/3
+
+
+
+<LoginScreen>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#14A99D")
+
+        FloatLayout:
+            TextInput:
+                id: login_email
+                hint_text: "E-mail"
+                size_hint: .8, .1
+                pos_hint: {"top": .8, "right": .9}
+
+            TextInput:
+                id: login_password
+                password: True
+                hint_text: "Password"
+                size_hint: .8, .1
+                pos_hint: {"top": .6, "right": .9}
+
+            Label:
+                id: login_message
+                text: "Input Email and Password"
+                color: (1,0,0,1)
+                size_hint: .8, .1
+                pos_hint: {"top": .3, "right": .9}
+
+            Button:
+                text: "Sign in!"
+                pos_hint: {"top": .4, "right": .9}
+                size_hint:  .8, .1
+                on_release:
+                    app.firebase.sign_in(login_email.text, login_password.text)
+
+
+            LabelButton:
+                text: "[u]Sign up![/u]"
+                markup: True
+                size_hint: .8, .1
+                pos_hint: {"top": .2, "right": .9}
+
+                color:
+                    (1,1,1,1) if self.state == "normal" else (1,0,0,1)
+
+
+                on_release:
+                    app.firebase.sign_up(login_email.text, login_password.text)

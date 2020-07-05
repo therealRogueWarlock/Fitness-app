@@ -1,0 +1,35 @@
+
+<PopupInputWidget>:
+    title: 'Input data'
+    display_body_title: display_body_title
+
+    size_hint: .5, .5
+    data_value: data_value
+
+    GridLayout:
+        rows: 3
+
+        Label:
+            id: display_body_title
+            text: ""
+            size_hint: .6, .2
+
+
+        TextInput:
+            id: data_value
+            size_hint: 1, 0.1
+            font_size:30
+
+            halign: 'center'
+            multiline: False
+            write_tab: False
+
+        Button:
+            text: "Submit data"
+            size_hint: .6, .2
+            on_release:
+                root.input_to_database()
+                root.dismiss()
+                app.update_layout()
+
+

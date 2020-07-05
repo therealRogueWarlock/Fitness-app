@@ -1,0 +1,174 @@
+#: import utils kivy.utils
+<Label>:
+    canvas.before:
+        Color:
+            rgb: utils.get_color_from_hex("#00cc88")
+        RoundedRectangle:
+            pos: self.x, self.y + (self.height/4)
+            size: self.width, self.height - (self.height/2)
+            radius: [10,]
+
+<Button>:
+    background_color: 0,0,0,0
+    canvas.before:
+        Color:
+            rgba: (.4,.4,.4,1) if self.state=='normal' else (0,.7,.7,1)  # visual feedback of press
+        RoundedRectangle:
+            pos: self.x, self.y + (self.height/6)
+            size: self.width, self.height - (self.height/3)
+            radius: [10,]
+
+<HomeScreen>:
+    # weight
+    body_weight: weight
+    body_goal_weight: goal_weight
+    body_weight_dif: weight_dif
+
+    # Body fat
+    body_body_fat: body_fat
+    body_goal_body_fat: goal_body_fat
+    body_body_fat_dif: body_fat_dif
+
+    # bmi
+    body_bmi: bmi
+
+    layout: home_layout
+
+    FloatLayout:
+        id: home_layout
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#00ffaa")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        GridLayout:
+            # Profile pic or icon
+            rows: 1
+            pos_hint: {"top": .95, "x": 0}
+            size_hint: 1, .15
+            ImageButton:
+                source: "icons/user.png"
+                on_release:
+                    print("profile, menu")
+
+
+        GridLayout:
+            # for progress and some stats
+            cols: 1
+            pos_hint: {"top": .75, "x": 0}
+            size_hint: 1, .5
+
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#83DCED")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+
+
+            GridLayout:
+                cols: 3
+                Label:
+                    id: current
+                    text: "Current"
+
+
+                Label:
+                    id: goal
+                    text: "Goal"
+
+
+                Label:
+                    id: difference
+                    text: "Difference"
+
+
+
+                Button:
+                    id: weight
+                    text: "Weight"
+                    font_size: .15 * (self.width + self.height)/2
+
+
+                Button:
+                    id: goal_weight
+                    text: "Goal Weight: "
+                    font_size: .15 * (self.width + self.height)/2
+                    on_release:
+                        root.input_popup('goal_weight')
+
+
+                Button:
+                    id: weight_dif
+                    text: "Difference"
+                    font_size: .15 * (self.width + self.height)/2
+
+
+                Button:
+                    id: body_fat
+                    text: "Body fat %: "
+                    font_size: .15 * (self.width + self.height)/2
+
+                Button:
+                    id: goal_body_fat
+                    text: "Goal body fat "
+                    font_size: .15 * (self.width + self.height)/2
+                    on_release:
+                        root.input_popup('goal_body_fat')
+
+
+
+                Button:
+                    id: body_fat_dif
+                    text: " Difference"
+                    font_size: .15 * (self.width + self.height)/2
+
+
+
+
+                Button:
+                    id: bmi
+                    text: "bmi"
+                    font_size: .15 * (self.width + self.height)/2
+
+
+
+
+        GridLayout:
+            # for menu buttons
+            rows: 1
+            pos_hint: {"top": .15, "x": .05}
+            size_hint: .9, .1
+
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#82DCED")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            ImageButton:
+                size_hint: .1, .5
+                source: "icons/013-nutritionist.png"
+                on_release:
+                    print("stats")
+                    app.change_screen("stats_screen")
+
+            ImageButton:
+                size_hint: .1, .5
+                source: "icons/019-statistics.png"
+                on_release:
+                    app.change_screen("graph_screen")
+                    print("graph stats")
+
+
+            ImageButton:
+                size_hint: .1, .5
+                source: "icons/023-log-out.png"
+                on_release:
+                    app.logout()
+                    app.change_screen("login_screen")
+

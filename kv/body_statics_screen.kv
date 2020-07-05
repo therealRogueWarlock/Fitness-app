@@ -1,0 +1,73 @@
+<BodyStaticsScreen>:
+    body_height: height
+    # measuring tape
+    body_ankle: ankle
+    body_wrist: wrist
+    body_head: head
+    # profile
+    age: age
+    gender: gender
+    GridLayout:
+        rows: 2
+        ScrollView:
+            GridLayout:
+                rows: 2
+
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: "300dp"
+                row_force_default: True
+
+                Button:
+                    id: height
+                    text: "Height: "
+                    font_size: .15 * (self.width + self.height)/2
+                    on_release:
+                        root.input_popup('height')
+                GridLayout:
+                    rows: 3
+
+                    Button:
+                        id: ankle
+                        text: "Ankle:"
+                        font_size: .15 * (self.width + self.height)/2
+                        on_release:
+                            root.input_popup('ankle')
+
+                    Button:
+                        id: wrist
+                        text: "Wrist:"
+                        font_size: .15 * (self.width + self.height)/2
+                        on_release:
+                            root.input_popup('wrist')
+
+                    Button:
+                        id: head
+                        text: "Head size:"
+                        font_size: .15 * (self.width + self.height)/2
+                        on_release:
+                            root.input_popup('head')
+
+                    Button:
+                        id: age
+                        text: "Age:"
+                        font_size: .15 * (self.width + self.height)/2
+                        on_release:
+                            root.input_popup('age')
+
+                    Button:
+                        id: gender
+                        text: "Gender:"
+                        font_size: .15 * (self.width + self.height)/2
+                        on_release:
+                            root.input_popup('gender')
+
+        ImageButton:
+            pos_hint: {"top": 0}
+            size_hint: 1, .2
+            source: "icons/022-user-login-button.png"
+            on_release:
+                app.change_screen("home_screen")
+
+
+

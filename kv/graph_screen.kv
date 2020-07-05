@@ -1,0 +1,25 @@
+#:import MeshLinePlot kivy_garden.graph.MeshLinePlot
+<GraphScreen>:
+    graph: graph
+    FloatLayout:
+        color: 0,0,0,1
+        Graph:
+            id: graph
+            xlabel:'X'
+            ylabel:'Y'
+            x_ticks_minor:5
+            x_ticks_major:25
+            y_ticks_major:1
+            y_grid_label: True
+            x_grid_label: True
+            padding:5
+            x_grid:True
+            y_grid: True
+            xmin:0
+            xmax:101
+            ymin:0
+            ymax:10
+            pos: root.width * 0.05, root.height / 6
+            size: root.width * 2 / 3 , root.height * 18 / 24
+
+

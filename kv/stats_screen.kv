@@ -1,0 +1,233 @@
+<StatsScreen>:
+    #body_height: height
+    body_weight: weight
+    # measuring tape
+    body_arms: arms
+    body_calfmuscles: calfmuscles
+    body_chest: chest
+    body_shoulders: shoulders
+    body_neck: neck
+    body_quads: quads
+    body_underarms: underarms
+    body_waist: waist
+    body_hip: hip
+    # skin fold
+    body_abdomen: abdomen
+    body_midaxilla: midaxilla
+    body_pectoral: pectoral
+    body_quadriceps: quadriceps
+    body_subscapular: subscapular
+    body_suprailiac: suprailiac
+    body_triceps: triceps
+    # date
+    date: date
+
+    carousel : carousel
+
+    layout: stats_layout
+
+    FloatLayout:
+        id: stats_layout
+
+        GridLayout:
+
+            rows: 3
+
+
+            Label:
+                pos_hint: {"top": 1, "x": 0}
+                size_hint: 1, .1
+                id: date
+                text: "insert date"
+
+            Carousel:
+                pos_hint: {"top": .9, "x": 0}
+                id: carousel
+                direction: 'left'
+                on_index:
+                    root.on_index()
+
+
+
+                ScrollView:
+                    GridLayout:
+                        rows: 4
+
+                        size_hint_y: None
+                        height: self.minimum_height
+                        row_default_height: "300dp"
+                        row_force_default: True
+
+                        GridLayout:
+                            rows: 2
+
+                            ImageButton:
+                                size_hint: 1, 0.4
+                                source: "icons/006-weight-scale.png"
+                                on_release:
+                                    print("weight")
+
+                            Button:
+                                id: weight
+                                text: "Weight: "
+                                font_size: .15 * (self.width + self.height)/2
+
+                                on_release:
+                                    root.input_popup('weight')
+
+                        GridLayout:
+                            rows: 2
+                            ImageButton:
+                                size_hint: 1, 0.4
+                                source: "icons/001-ruler.png"
+                                on_release:
+                                    print("Messurement")
+
+                            GridLayout:
+                                cols: 3
+                                Button:
+                                    id: arms
+                                    text: "Arms"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('arms')
+
+                                Button:
+                                    id: calfmuscles
+                                    text: "Calfmuscles"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('calfmuscles')
+
+                                Button:
+                                    id: chest
+                                    text: "Chest"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('chest')
+
+                                Button:
+                                    id: shoulders
+                                    text: "Shoulders"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('shoulders')
+
+                                Button:
+                                    id: neck
+                                    text: "Neck"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('neck')
+
+                                Button:
+                                    id: quads
+                                    text: "Quads"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('quads')
+
+                                Button:
+                                    id: underarms
+                                    text: "Underarms"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('underarms')
+
+                                Button:
+                                    id: waist
+                                    text: "Waist"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('waist')
+
+
+                                Button:
+                                    id: hip
+                                    text: "Hip"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('hip')
+
+                        GridLayout:
+                            rows: 2
+
+                            ImageButton:
+                                size_hint: 1, .4
+                                source: "icons/003-caliper-1.png"
+                                on_release:
+                                    print("Skinfold")
+
+                            GridLayout:
+                                cols: 3
+
+                                Button:
+                                    id: abdomen
+                                    text: "Abdomen"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('abdomen')
+
+                                Button:
+                                    id: midaxilla
+                                    text: "Midaxilla"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('midaxilla')
+
+
+                                Button:
+                                    id: pectoral
+                                    text: "Pectoral"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('pectoral')
+
+
+                                Button:
+                                    id: quadriceps
+                                    text: "Quadriceps"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('quadriceps')
+
+                                Button:
+                                    id: subscapular
+                                    text: "Subscapular"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('subscapular')
+
+
+                                Button:
+                                    id: suprailiac
+                                    text: "Suprailiac"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('suprailiac')
+
+
+                                Button:
+                                    id: triceps
+                                    text: "Triceps"
+                                    font_size: .15 * (self.width + self.height)/2
+                                    on_release:
+                                        root.input_popup('triceps')
+
+            GridLayout:
+                size_hint: 1, .2
+                cols: 2
+                ImageButton:
+                    pos_hint: {"top": 0, "x": 0}
+                    source: "icons/016-weight-2.png"
+                    on_release:
+                        root.update_stats()
+                        app.change_screen("body_statics_screen")
+                        print("Height")
+
+                ImageButton:
+                    pos_hint: {"top": 0, "x": 0}
+                    source: "icons/022-user-login-button.png"
+                    on_release:
+                        app.change_screen("home_screen")
+

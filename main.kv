@@ -1,0 +1,31 @@
+#: include kv/home_screen.kv
+#: include kv/stats_screen.kv
+#: include kv/login_screen.kv
+#: include kv/input_popup.kv
+#: include kv/graph_screen.kv
+#: include kv/body_statics_screen.kv
+
+GridLayout:
+    cols:1
+    ScreenManager:
+        id: screen_manager
+
+        LoginScreen:
+            name: "login_screen"
+            id: login_screen
+
+        HomeScreen:
+            name: "home_screen"
+            id: home_screen
+
+        StatsScreen:
+            name: "stats_screen"
+            id: stats_screen
+
+        BodyStaticsScreen:
+            name: "body_statics_screen"
+            id: body_statics_screen
+
+        GraphScreen:
+            name: "graph_screen"
+            id: graph_screen
